@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+    <title>Snow Freak 信州</title>
+<link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }*/
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        svg {
+            max-width: 400px;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .area {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            stroke: #ffffff;
+            stroke-width: 3;
+            stroke-linejoin: round;
+        }
+
+        .area:hover {
+            filter: brightness(1.2);
+            stroke-width: 4.5;
+        }
+
+        /* エリアごとの色 */
+        .area-hokushin { fill: rgb(39, 19, 218) }
+        .area-toshin { fill: rgba(229, 57, 14, 0.946)}
+        .area-chushin { fill: rgb(255, 150, 0)}
+        .area-nanshin { fill: rgb(23, 215, 58)}
+
+        /* ツールチップ */
+        .tooltip {
+            position: absolute;
+            background: white;
+            color: rgba(0, 0, 0, 0.9);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            white-space: nowrap;
+        }
+
+        .tooltip.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            svg {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+<header id="top">
+    <a href="top.html"><img src="images/title.png" alt="Snow Freak 信州"></a>
+</header>
+
+<nav>
+    <ul>
+    <li id="nav_top"><a href="top.html">TOP</a></li>
+    <li id="nav_area"><a href="area.html">エリア紹介</a></li>
+    <li id="nav_column"><a href="column.html">コラム</a></li>
+    </ul>
+</nav>
+
+<article>
+
+<div id="breadcrumb">
+<ol>
+    <ul>
+        <li><a href="top.html">TOP&nbsp;&nbsp;&gt;</a></li>
+        <li>エリア紹介</li>
+    </ul>
+</ol>
+
+    <h1>県内MAP</h1>
+</div>
+
+    <div class="container">
+        <div class="map-container">
+            <!-- 実際の画像データから抽出したSVGパス -->
+            <svg viewBox="0 0 600 900" xmlns="http://www.w3.org/2000/svg">
+                
+                <!-- 北信エリア -->
+                <path class="area area-hokushin" 
+                      id="area-hokushin"
+                      data-area="北信エリア"
+                      data-url="area_North.html"
+                      d="M 522,28 L 502,26 L 464,39 L 448,73 L 427,80 L 426,105 L 415,114 L 408,111 L 405,103 L 391,104 L 372,113 L 350,112 L 336,132 L 314,124 L 307,128 L 279,189 L 280,215 L 290,227 L 282,253 L 300,263 L 293,274 L 295,284 L 327,272 L 338,276 L 356,297 L 373,308 L 402,301 L 384,269 L 386,264 L 410,262 L 414,252 L 427,246 L 442,249 L 449,244 L 470,245 L 468,233 L 482,214 L 480,205 L 506,196 L 502,183 L 507,177 L 536,168 L 543,170 L 548,164 L 572,156 L 570,148 L 562,143 L 571,131 L 567,120 L 570,102 L 547,91 L 543,81 L 533,79 L 527,68 L 529,42 Z" />
+
+                <!-- 東信エリア -->
+                <path class="area area-toshin" 
+                      id="area-toshin"
+                      data-area="東信エリア"
+                      data-url="area_East.html"
+                      d="M 392,270 L 409,298 L 405,307 L 371,314 L 357,304 L 353,321 L 338,320 L 341,389 L 361,409 L 362,436 L 372,448 L 382,448 L 390,456 L 401,455 L 414,464 L 424,454 L 434,453 L 449,489 L 455,521 L 472,525 L 487,537 L 487,556 L 495,555 L 502,546 L 531,550 L 540,547 L 545,552 L 546,566 L 566,568 L 574,556 L 588,550 L 589,539 L 580,522 L 550,498 L 552,451 L 535,446 L 527,432 L 530,419 L 538,419 L 541,427 L 550,424 L 546,418 L 550,409 L 541,405 L 537,392 L 537,376 L 555,367 L 559,334 L 554,315 L 530,310 L 515,321 L 505,317 L 491,321 L 461,308 L 457,282 L 467,255 L 458,250 L 445,255 L 430,252 L 423,259 L 418,258 L 414,268 Z" />
+
+                <!-- 中信エリア -->
+                <path class="area area-chushin" 
+                      id="area-chushin"
+                      data-area="中信エリア"
+                      data-url="area_Central.html"
+                      d="M 306,80 L 293,83 L 279,75 L 261,76 L 264,100 L 251,115 L 249,126 L 221,146 L 218,153 L 221,194 L 214,213 L 217,228 L 194,240 L 192,249 L 199,254 L 198,263 L 187,267 L 178,278 L 180,289 L 172,306 L 160,313 L 152,329 L 161,332 L 174,346 L 178,361 L 176,371 L 147,407 L 153,418 L 153,432 L 139,444 L 138,458 L 146,466 L 161,471 L 156,500 L 134,519 L 125,540 L 114,542 L 106,563 L 97,565 L 87,557 L 69,561 L 62,584 L 53,585 L 49,595 L 52,599 L 67,599 L 75,610 L 101,623 L 114,656 L 130,670 L 131,683 L 121,696 L 142,709 L 145,725 L 163,739 L 168,729 L 181,726 L 195,694 L 222,678 L 232,647 L 227,641 L 231,628 L 229,607 L 244,589 L 244,578 L 249,574 L 245,564 L 247,549 L 240,546 L 238,532 L 266,503 L 265,494 L 284,477 L 299,486 L 315,470 L 321,431 L 326,426 L 337,432 L 355,428 L 354,410 L 335,392 L 336,363 L 330,352 L 334,338 L 332,317 L 349,314 L 351,299 L 333,279 L 294,293 L 286,282 L 292,264 L 283,264 L 275,256 L 283,228 L 274,219 L 274,180 L 300,125 L 314,108 L 312,99 L 319,90 Z" />
+
+                <!-- 南信エリア -->
+                <path class="area area-nanshin" 
+                      id="area-nanshin"
+                      data-area="南信エリア"
+                      data-url="area_South.html"
+                      d="M 431,460 L 425,461 L 419,470 L 404,469 L 398,461 L 387,462 L 378,454 L 367,452 L 356,435 L 334,438 L 328,433 L 321,474 L 303,492 L 286,485 L 271,497 L 272,506 L 244,536 L 245,542 L 253,546 L 255,577 L 250,582 L 250,592 L 235,610 L 237,631 L 233,638 L 238,644 L 237,659 L 228,681 L 198,701 L 200,707 L 191,713 L 187,729 L 171,735 L 164,749 L 165,761 L 153,773 L 159,778 L 159,785 L 166,788 L 167,796 L 160,801 L 150,800 L 154,830 L 137,840 L 140,851 L 132,868 L 140,874 L 140,886 L 165,880 L 179,871 L 212,875 L 218,884 L 248,876 L 256,879 L 258,865 L 271,862 L 277,851 L 312,840 L 313,833 L 326,820 L 342,821 L 349,811 L 358,809 L 363,800 L 350,785 L 349,770 L 362,766 L 365,757 L 356,742 L 362,727 L 360,714 L 367,707 L 379,709 L 378,702 L 385,696 L 383,683 L 387,677 L 380,666 L 375,641 L 394,624 L 378,614 L 378,601 L 395,575 L 397,564 L 410,563 L 416,573 L 449,522 L 440,483 L 429,471 Z" />
+
+                <!-- エリア名ラベル -->
+                <text x="390" y="215" text-anchor="middle" fill="white" font-size="85"  pointer-events="none"  font-family="'HGP行書体', cursive">北信</text>
+                <text x="445" y="410" text-anchor="middle" fill="white" font-size="75"  pointer-events="none"  font-family="'メイリオ', cursive">東信</text>
+                <text x="253" y="413" text-anchor="middle" fill="white" font-size="80" font-weight="bold" pointer-events="none"  font-family="'游明朝', 'Yu Mincho', serif">中信</text>
+                <text x="300" y="700" text-anchor="middle" fill="white" font-size="75" font-weight="bold" pointer-events="none"  font-family="'明朝体', serif">南信</text>
+            </svg>
+
+            <!-- ツールチップ -->
+            <div class="tooltip" id="tooltip"></div>
+        </div>
+    </div>
+    <script>
+        // 全てのエリアを取得
+        const areas = document.querySelectorAll('.area');
+        const tooltip = document.getElementById('tooltip');
+
+        // 各エリアにイベントリスナーを追加
+        areas.forEach(area => {
+            // クリックイベント
+            area.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                window.location.href = url;
+            });
+
+            // マウスオーバーイベント
+            area.addEventListener('mouseenter', function(e) {
+                const areaName = this.getAttribute('data-area');
+                tooltip.textContent = areaName;
+                tooltip.classList.add('show');
+                updateTooltipPosition(e);
+            });
+
+            // マウスムーブイベント
+            area.addEventListener('mousemove', function(e) {
+                updateTooltipPosition(e);
+            });
+
+            // マウスアウトイベント
+            area.addEventListener('mouseleave', function() {
+                tooltip.classList.remove('show');
+            });
+        });
+
+        // ツールチップの位置を更新
+        function updateTooltipPosition(e) {
+            const containerRect = document.querySelector('.map-container').getBoundingClientRect();
+            const x = e.clientX - containerRect.left;
+            const y = e.clientY - containerRect.top;
+            
+            tooltip.style.left = (x + 15) + 'px';
+            tooltip.style.top = (y - 40) + 'px';
+        }
+
+        // キーボードアクセシビリティ
+        areas.forEach(area => {
+            area.setAttribute('tabindex', '0');
+            area.setAttribute('role', 'link');
+            area.setAttribute('aria-label', area.getAttribute('data-area'));
+
+            area.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const url = this.getAttribute('data-url');
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
+
+<section id="North1">
+    <h2><a href="area_North.html">■北信（長野県北部）</a></h2>
+        <p>豪雪地として知られ、雪質に恵まれ天然のパウダースノーが楽しめる。
+        <br>野沢温泉や斑尾高原、志賀高原、高社山など、一大的なスノーリゾートが構成されている。</p>
+
+    <h3 id="areaN"><a href="area_North.html#n1">北信（北信州、北志賀、志賀高原）エリア</a></h3>
+        <h4><a href="area_North.html#sakae">栄村、</a><a href="area_North.html#nozawa">野沢温泉村、</a><a href="area_North.html#ibaraki">飯山市、</a><a href="area_North.html#kijimadaira">木島平村、</a><a href="area_North.html#yamanouchi">山ノ内町</a></h4>
+
+    <h3 id="areaN"><a href="area_North.html#n2">長野（信濃町、飯綱、戸隠、高山、須坂）エリア</a></h3>
+        <h4><a href="area_North.html#shinano">信濃町、</a><a href="area_North.html#ibaraki">飯綱町、</a><a href="area_North.html#nagano">長野市、</a><a href="area_North.html#takayama">高山村、</a><a href="area_North.html#suzaka">須坂市</a></h4>
+   
+</section>
+
+<section id="Central1">
+    <h2><a href="area_Central.html">■中信（長野県中西部）</a></h2>
+        <p>世界的なウィンタースポーツの聖地、白馬をはじめ、冬の北アルプス（白馬岳や乗鞍岳等）
+        <br>中央アルプス（木曾山脈）、御岳など雄大な山々の絶景を拝めるエリア。</p>
+
+        <h3 id="areaC"><a href="area_Central.html#c1">北アルプス（小谷、白馬、大町）エリア</a></h3>
+            <h4><a href="area_Central.html#otari">小谷村、</a><a href="area_Central.html#hakuba">白馬村、</a><a href="area_Central.html#oomachi">大町市</a></h4>
+
+        <h3 id="areaC"><a href="area_Central.html#c2">松本（聖高原、乗鞍、野麦峠）エリア</a></h3>
+            <h4><a href="area_Central.html#omi">麻績村、</a><a href="area_Central.html#matsushiro">松本市、</a><a href="area_Central.html#asahi">朝日村</a></h4>
+
+        <h3 id="areaC"><a href="area_Central.html#c3">木曽（木曾谷・御岳）エリア</a></h3>
+            <h4><a href="area_Central.html#kisovil">木祖村、</a><a href="area_Central.html#kisotown">木曾町、</a><a href="area_Central.html#otaki">王滝村</a></h4>
+</section>
+
+<section id="East1">
+    <h2><a href="area_East.html">■東信（長野県東部）</a></h2>
+        <p>関越自動車道や北陸新幹線など、関東圏からのアクセスが良く高速直結のスキー場も。
+        <br>軽井沢や菅平などの人気観光地を擁し、レジャーも楽しめる。</p>
+
+    <h3 id="areaE"><a href="area_East.html#e1">上田（菅平、美ヶ原、和田峠）エリア</a></h3>
+        <h4><a href="area_East.html#ueda">上田市、</a><a href="area_East.html#toumi">東御市、</a><a href="area_East.html#nagawa">長和町</a></h4>
+
+    <h3 id="areaE"><a href="area_East.html#e2">佐久（軽井沢、八ヶ岳・蓼科・白樺湖①）エリア</a></h3>
+        <h4><a href="area_East.html#komoro">小諸市、</a><a href="area_East.html#saku">佐久市、</a><a href="area_East.html#karuizawa">軽井沢町、</a><a href="area_East.html#koumi">小海町、</a><a href="area_East.html#kawakami">川上村、</a><a href="area_East.html#sakuho">佐久穂町、</a><a href="area_East.html#tateshina">立科町</a></h4>
+</section>
+
+<section id="South1">
+    <h2><a href="area_South.html">■南信（長野県南部）</a></h2>
+        <p>人工降雪機を使うところが多いが晴天率がとても高く、雄大な日本アルプスなどを眺め快適な滑りを楽しめる。
+        <br>東京や神奈川、東海地域、西日本からのアクセスが良く、ビーナスライン沿いには穴場の人気スポットが多くひしめく。</p>
+    <h3 id="areaS"><a href="area_South.html#s1">諏訪（霧ヶ峰、八ヶ岳・蓼科・白樺湖②）エリア</a></h3>
+        <h4><a href="area_South.html#chino">茅野市、</a><a href="area_South.html#suwa">諏訪市、</a><a href="area_South.html#fujimi">富士見町</a></h4>
+
+    <h3 id="areaS"><a href="area_South.html#s2">上伊那・南信州（伊那、駒ケ根、下伊那）エリア</a></h3>
+        <h4><a href="area_South.html#ina">伊那市、</a><a href="area_South.html#komagane">駒ケ根市、</a><a href="area_South.html#achi">阿智村、</a><a href="area_South.html#hiraya">平谷村</a></h4>
+</section>
+
+
+<aside></aside>
+</article>
+</body>
+
+<footer>
+    <p id="bk"><a href="#top">ページの先頭に戻る</a></p>
+    <h2 id="bk"><a href="top.html">Snow Freak 信州</a></h2>
+    <p id="copyright"><small>Copyright &copy;2025 Snow Freak 信州 All rights reserved.</small></p>
+</footer>
+
+</html>
