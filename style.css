@@ -1,0 +1,299 @@
+@charset "utf-8";
+/*全ページ共通ここから*/
+
+body{
+	background-color:#ffffff;
+	color: #000000;
+	font-family: 'ヒラギノ角ゴシック ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+	margin: 0px;
+}
+/*ヘッダー*/
+header{
+	color: aqua;
+}
+
+/*ヘッダー画像*/
+header img{
+	float: inline-start;
+	margin: 0;
+	padding: 0;
+}
+
+/*ナヴィゲーション*/
+nav ul {
+	text-align: left;
+	padding-top: 95px;
+	padding-bottom: 5px;
+	margin: 0;
+}
+
+nav ul a{
+	text-decoration: none;
+	color:black;
+}
+
+nav ul a:hover{
+	color:rgb(0, 149, 255);
+}
+
+nav li {
+    display: inline;
+	padding: 10px;
+	padding: 12px;
+
+}
+
+/*パンくずリスト*/
+#breadcrumb ul li {
+	display: inline;
+	padding: 0px;
+}
+
+#breadcrumb ul li a{
+	text-decoration: none;
+	color:black;
+}
+
+#breadcrumb ul li a:hover{
+	color:rgb(0, 149, 255);
+}
+
+/*見出し、段落*/
+h1{
+	margin: 0;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+h2{
+	margin: 5px;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+
+h3{
+	margin: 10px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+	margin-top: 30px;
+}
+
+h4{
+	margin: 5px;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+h5{
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+p{
+	margin: 10px;
+	margin-bottom: 30px;
+	line-height: 1.6;
+}
+
+/*フッター*/
+footer{
+	margin: 0;
+	text-align: center;	
+	background-color:rgb(0, 149, 255);
+	color: black;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	clear: both;
+}
+
+/*全ページ共通ここまで*/
+
+/*TOPページここから*/
+
+/*中央に寄せ*/
+#graphic,#catch #footer{
+	width: 840px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.catch{
+	top: 20px;
+}
+
+/*TOPページここまで*/
+
+
+/*エリアここから*/
+article{
+	float: left;
+	width: 75%;
+	margin: 0px;
+}
+
+
+/*サイドメニュー*/
+
+#North1, #Central1, #East1, #South1{
+	float : left;
+}
+
+aside{
+	position: sticky;
+	top: 0;
+
+	right: 0px;
+	float: right;
+	width: 25%;
+}
+
+aside ul{
+	list-style: none;
+}
+
+.sidebar{
+
+	top: 0;
+	height: 100vh;
+}
+
+#hoverN, #hoverC, #hoverE, #hoverS{
+	padding: 0px;
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+/*エリア地図の余白*/
+#maphokushin {
+	margin-right: 10px;
+}
+#mapchushin {
+	margin-right: 10px;
+}
+
+#maptoushin {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#mapnanshin {
+	margin-left: 10px;
+}
+
+/*エリアの左端の線*/
+#areaN{
+	color:rgb(0,191,255);
+	border-left: 8px solid rgb(0,191,255);
+	padding-left: 5px;
+}
+
+#areaC{
+	color:rgb(255,140,0);
+	border-left: 8px solid rgb(255,140,0);
+	padding-left: 5px;
+}
+
+#areaE{
+	color:rgb(255,20,147);
+	border-left: 8px solid rgb(255,20,147);
+	padding-left: 5px;
+}
+
+#areaS{
+	color:rgb(34,139,34);
+	border-left: 8px solid rgb(34,139,34);
+	padding-left: 5px;
+}
+
+/*エリア見出しの色*/
+#colorN{
+	color:rgb(0,191,255)
+}
+#colorC{
+	color:rgb(255,140,0)
+}
+#colorE{
+	color:rgb(255,20,147)
+}
+#colorS{
+	color:rgb(34,139,34)
+}
+
+/*リンクの色*/
+
+#North1 a {
+
+	text-decoration: none;
+	color:rgb(0,191,255)
+}
+
+#North1 a:hover{
+	color:rgb(0, 0, 255)
+}
+
+#Central1 a{
+	text-decoration: none;
+	color:rgb(255,140,0)
+}
+
+#Central1 a:hover{
+	color:rgb(255,69,0)
+}
+
+#East1 a{
+	text-decoration: none;
+	color:rgb(255,20,147)
+}
+
+#East1 a:hover{
+	color:rgb(255, 0, 0)
+}
+
+#South1 a{
+	text-decoration: none;
+	color:rgb(18, 179, 23)
+}
+
+#South1 a:hover{
+	color:rgb(16, 91, 16)
+}
+
+#beginner a{
+	text-decoration: none;
+	color:rgb(0,5,255)
+}
+
+#bk a{
+	text-decoration: none;
+	color:black;
+
+}
+
+#bk a:hover{
+	color:blue;
+}
+
+/*サイドメニュー　ホバー効果*/
+#hoverN:hover {
+	background-color: rgb(230, 240, 255);
+}
+
+#hoverC:hover {
+	background-color: rgb(255, 240, 230);
+}
+
+#hoverE:hover {
+	background-color: rgb(255, 220, 220);
+}
+
+#hoverS:hover {
+	background-color: rgb(220, 255, 220);
+}
+
+
+
+/*区切り線*/
+#borderline{
+	border-bottom: 1px solid #ccc;
+}
+
+/*エリアここまで*/
